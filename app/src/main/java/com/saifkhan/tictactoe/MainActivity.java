@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button [][] button = new Button[3][3];
@@ -33,10 +34,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ResetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ResetGame();
 
             }
         });
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -87,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         for(int i=0; i<3;i++){
-            if(field[0][i].equals(field[i][i]) && field[0][i].equals(field[2][i])&& !field[0][i].equals("")){
+            if(field[0][i].equals(field[1][i]) && field[0][i].equals(field[2][i])&& !field[0][i].equals("")){
                 return true;
             }
         }
@@ -103,13 +107,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void Player1Wins() {
+        P1Point++;
+        Toast.makeText(this,"Player 1 wins!",Toast.LENGTH_SHORT).show();
+        UpdatePointText();
+        resetBoard();
     }
+
+
     private void Player2Wins() {
+        P2Point++;
+        Toast.makeText(this,"Player 2 wins!",Toast.LENGTH_SHORT).show();
+        UpdatePointText();
+        resetBoard();
     }
 
     private void Draw() {
+        Toast.makeText(this,"DRAW!!!!",Toast.LENGTH_SHORT).show();
+        resetBoard();
     }
 
+
+
+    private void UpdatePointText() {
+        TVPlayer1.setText("Player 1: "+P1Point);
+        TVPlayer2.setText("Player 1: "+P2Point);
+    }
+    private void resetBoard() {
+        for(int i=0; i<3;i++){
+            for(int j=0;j<3;j++)
+            {
+                button[i][j].setText("");
+
+            }
+        }
+        RoundCount = 0;
+        Player1Turn = true;
+    }
+
+    private void ResetGame() {
+        
+    }
 
 
 }
