@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         resetBoard();
         
     }
-
+    //Saving Data during Phone Rotate
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -164,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         outState.putInt("P2Point",P2Point);
         outState.putBoolean("PlayerTurn",Player1Turn);
     }
+    // Data during Phone Rotate
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
