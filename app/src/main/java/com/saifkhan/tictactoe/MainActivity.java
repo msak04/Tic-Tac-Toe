@@ -1,5 +1,6 @@
 package com.saifkhan.tictactoe;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -132,6 +133,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TVPlayer1.setText("Player 1: "+P1Point);
         TVPlayer2.setText("Player 1: "+P2Point);
     }
+
+
+
     private void resetBoard() {
         for(int i=0; i<3;i++){
             for(int j=0;j<3;j++)
@@ -145,8 +149,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void ResetGame() {
+        P1Point = 0;
+        P2Point = 0;
+        UpdatePointText();
+        resetBoard();
         
     }
 
-
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("RoundCount",RoundCount);
+        outState.putInt("P1Point",P1Point);
+        outState.putInt("P2Point",P2Point);
+        outState.putBoolean("PlayerTurn",Player1Turn);
+    }
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        RoundCount = savedInstanceState.getInt("RoundCount");
+        P1Point = savedInstanceState.getInt("P1Point");
+        P2Point = savedInstanceState.getInt("P2Point");
+        Player1Turn = savedInstanceState.getBoolean("PlayerTurn");
+    }
 }
