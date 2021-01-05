@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void UpdatePointText() {
         TVPlayer1.setText("Player 1: "+P1Point);
-        TVPlayer2.setText("Player 1: "+P2Point);
+        TVPlayer2.setText("Player 2: "+P2Point);
     }
 
 
